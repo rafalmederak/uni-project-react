@@ -3,7 +3,7 @@ import "assets/css/global.css";
 function App() {
   return (
     <div>
-      <h1>Start of the project</h1>
+      <h1>New project</h1>
     </div>
   );
 }
