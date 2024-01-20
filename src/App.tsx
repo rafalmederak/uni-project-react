@@ -1,10 +1,12 @@
 import "assets/css/global.css";
+import Layout from "common/Layout";
+import MainRoutes from "routes/MainRoutes";
 
 function App() {
   return (
-    <div>
-      <h1>New project</h1>
-    </div>
+    <Layout>
+      <MainRoutes />
+    </Layout>
   );
 }
 
