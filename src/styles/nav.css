@@ -1,0 +1,27 @@
+
+nav {
+  display: flex;
+  justify-content: space-around;
+  background-color: #292424; 
+  padding: 10px;
+  height: 50px;
+  align-items: center;
+}
+
+.nav-logo{
+  height: 40px;
+  width: 40px;
+}
+
+nav a {
+  color: #ffffff; 
+  text-decoration: none; 
+  font-weight: bold; 
+  padding: 8px 16px; 
+  border-radius: 5px; 
+  transition: background-color 0.3s; 
+}
+
+nav a:hover {
+  background-color: #2980b9; 
+}
