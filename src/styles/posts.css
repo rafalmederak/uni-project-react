@@ -8,7 +8,6 @@
   }
   
   .post {
-    position: relative;
     width: 100%;
     max-width: 1500px;
     border: 3px solid #090909;
@@ -32,7 +31,7 @@
     border: 3px solid #61bbc7;
   }
   
-  h2 {
+  .post h2 {
     margin: 10px 0;
   }
   
@@ -40,7 +39,7 @@
     margin-top: 10px;
   }
   
-  button {
+  .post button {
     margin-top: 10px;
     padding: 5px 10px;
     background-color: #ff5555;

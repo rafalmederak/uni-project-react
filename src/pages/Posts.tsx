@@ -58,7 +58,7 @@ const Posts = () => {
 
   return (
     <div className="posts-container">
-      {postsData.map(post => (
+      {posts.map(post => (
         <div key={post.id} className="post">
           <div className="user-info">
             <img src={`https://pic.onlinewebfonts.com/thumbnails/icons_504591.svg`} alt={`User ${post.userId}'s profile`} />
