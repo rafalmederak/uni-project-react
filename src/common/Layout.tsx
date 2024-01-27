@@ -1,12 +1,13 @@
 import Footer from "components/Footer";
 import Nav from "components/Nav";
-import { ILayoutProps } from "interfaces/Layout.interfaces";
+import { ILayoutProps } from "interfaces/Layout";
+import "styles/layout.css";
 
 const Layout = ({ children }: ILayoutProps) => {
   return (
     <>
       <Nav />
-      {children}
+      <main className="pages-layout">{children}</main>
       <Footer />
     </>
   );
