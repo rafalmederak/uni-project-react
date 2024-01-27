@@ -1,8 +1,12 @@
 export interface User {
-    id: number;
+  id: number;
+  name: string;
+  email: string;
+  company: {
     name: string;
-    email: string;
-    company: {
-      name: string;
-    };
-  }
+  };
+}
+
+export interface UsersProps {
+  users: User[];
+}
