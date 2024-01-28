@@ -4,7 +4,7 @@ import logo from "assets/images/logo.png";
 import { NavLink } from "react-router-dom"; 
 
 
-const Footer: React.FC = () => {
+const Footer = () => {
   return (
       <footer className="footer">
           <img src={logo} alt="Logo" className="footer-logo" />
