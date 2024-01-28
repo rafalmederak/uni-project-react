@@ -1,0 +1,33 @@
+.footer {
+  background-color: #292424;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  padding: 10px;
+  width: 100%;
+  color: white;
+  height: 150px;
+}
+
+.footer-logo {
+  max-width: 50px;
+}
+
+.footer-links {
+  margin: 16px 0 6px 0;
+}
+
+.footer-links a {
+  margin: 0 20px;
+  color: white;
+}
+
+.footer-links a:hover {
+  text-decoration: underline;
+}
+
+.footer p {
+  color: grey;
+}
