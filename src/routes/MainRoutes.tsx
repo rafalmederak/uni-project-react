@@ -9,10 +9,12 @@ import NotFound from "pages/NotFound";
 import { useEffect, useState } from "react";
 import { User } from "interfaces/User";
 import { Post } from "interfaces/Post";
+import { Photo } from "interfaces/Photo";
 
 const MainRoutes = () => {
   const [users, setUsers] = useState<User[]>([]);
   const [posts, setPosts] = useState<Post[]>([]);
+  const [photos, setPhotos] = useState<Photo[]>([]);
 
   useEffect(() => {
     fetch("https://jsonplaceholder.typicode.com/users")
@@ -30,6 +32,15 @@ const MainRoutes = () => {
       .then((data: Post[]) => {
         setPosts(data);
       });
+
+    fetch("https://jsonplaceholder.typicode.com/photos")
+      .then((res) => {
+        return res.json();
+      })
+      .then((data: Photo[]) => {
+        let shorterData = data.slice(0, 100);
+        setPhotos(shorterData);
+      });
   }, []);
 
   return (
@@ -41,7 +52,7 @@ const MainRoutes = () => {
           element={<Posts posts={posts} setPosts={setPosts} users={users} />}
         />
         <Route path="/albums" element={<Albums />} />
-        <Route path="/photos" element={<Photos />} />
+        <Route path="/photos" element={<Photos photos={photos} />} />
         <Route path="/users" element={<Users users={users} />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
