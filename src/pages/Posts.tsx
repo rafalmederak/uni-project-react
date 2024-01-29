@@ -1,9 +1,43 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "styles/posts.css";
 import { Post, PostsProps } from "interfaces/Post";
 import { User } from "interfaces/User";
 
 const Posts = ({ posts, setPosts, users }: PostsProps) => {
+
+  const [newPost, setNewPost] = useState<Post>({
+    userId: 1,
+    id: 0,
+    title: "",
+    body: "",
+  });
+
+  const maxId = Math.max(...posts.map(post => post.id));
+
+  useEffect(() => {
+    setNewPost(prevNewPost => ({
+      ...prevNewPost,
+      id: maxId + 1,
+    }));
+  }, [maxId]);
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setNewPost({
+      ...newPost,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleAddPost = () => {
+    setPosts([newPost, ...posts]);
+    setNewPost({
+      userId: 1,
+      id: 0,
+      title: "",
+      body: "",
+    });
+  };
+
   const handleDeletePost = (postId: number) => {
     const updatedPosts = posts.filter((post: Post) => post.id !== postId);
     setPosts(updatedPosts);
@@ -16,6 +50,22 @@ const Posts = ({ posts, setPosts, users }: PostsProps) => {
 
   return (
     <div className="posts-container">
+       <div className="add-post">
+        <input
+          type="text"
+          name="title"
+          placeholder="Enter post title"
+          value={newPost.title}
+          onChange={handleInputChange}
+        />
+        <textarea
+          name="body"
+          placeholder="Enter post text"
+          value={newPost.body}
+          onChange={handleInputChange}
+        ></textarea>
+        <button onClick={handleAddPost}>Add Post</button>
+      </div>
       {posts.map((post: Post) => (
         <div key={post.id} className="post">
           <div className="user-info">

@@ -49,3 +49,42 @@
     cursor: pointer;
   }
 
+  .post button:hover {
+    background-color: #b75252;
+  }
+
+  .add-post {
+    width: 100%;
+    max-width: 1500px;
+    background-color: #e4e4e4;
+    padding: 10px;
+    border: 1px solid #090909;
+    border-radius: 5px;
+    margin-bottom: 20px;
+  }
+
+  .add-post input {
+    margin-bottom: 10px;
+    padding: 5px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .add-post textarea {
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 8px;
+  }
+
+  .add-post button {
+    padding: 5px 10px;
+    background-color: #4caf50;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+  }
+  
+  .add-post button:hover {
+    background-color: #45a049;
+  }
