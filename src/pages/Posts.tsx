@@ -3,14 +3,16 @@ import "styles/posts.css";
 import { Post, PostsProps } from "interfaces/Post";
 import { User } from "interfaces/User";
 
+const initialPostState: Post = {
+  userId: 1,
+  id: 0,
+  title: "",
+  body: "",
+};
+
 const Posts = ({ posts, setPosts, users }: PostsProps) => {
 
-  const [newPost, setNewPost] = useState<Post>({
-    userId: 1,
-    id: 0,
-    title: "",
-    body: "",
-  });
+  const [newPost, setNewPost] = useState<Post>(initialPostState);
 
   const maxId = Math.max(...posts.map(post => post.id));
 
@@ -30,12 +32,7 @@ const Posts = ({ posts, setPosts, users }: PostsProps) => {
 
   const handleAddPost = () => {
     setPosts([newPost, ...posts]);
-    setNewPost({
-      userId: 1,
-      id: 0,
-      title: "",
-      body: "",
-    });
+    setNewPost(initialPostState);
   };
 
   const handleDeletePost = (postId: number) => {
