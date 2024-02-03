@@ -3,12 +3,18 @@ import Nav from "components/Nav";
 import { ILayoutProps } from "interfaces/Layout";
 import "styles/layout.css";
 
-const Layout = ({ children }: ILayoutProps) => {
+const Layout = ({ children, currentUser }: ILayoutProps) => {
   return (
     <>
-      <Nav />
-      <main className="pages-layout">{children}</main>
-      <Footer />
+      {currentUser ? (
+        <>
+          <Nav />
+          <main className="pages-layout">{children}</main>
+          <Footer />
+        </>
+      ) : (
+        <>{children}</>
+      )}
     </>
   );
 };
