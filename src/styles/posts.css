@@ -15,7 +15,6 @@
     margin: 20px;
     padding: 15px;
     background-color: #e4e4e4;
-
   }
   
   .user-info {
@@ -86,4 +85,12 @@
   
   .add-post button:hover {
     background-color: #45a049;
+  }
+
+  .comment-section button {
+    background-color: #61bbc7;
+  }
+
+  .comment-section button:hover {
+    background-color: #53a0a9;
   }
