@@ -1,4 +1,5 @@
 import { User } from "interfaces/User";
+import { Comment } from "interfaces/Comment";
 
 export interface Post {
   userId: number;
@@ -11,4 +12,12 @@ export interface PostsProps {
   posts: Post[];
   setPosts: React.Dispatch<React.SetStateAction<Post[]>>;
   users: User[];
+  comments: Comment[];
+  setComments: React.Dispatch<React.SetStateAction<Comment[]>>;
+  currentUser: {
+    email: string;
+    name:string;
+    id: number;
+  } 
+  | null;
 }
