@@ -10,11 +10,13 @@ import { useEffect, useState } from "react";
 import { User } from "interfaces/User";
 import { Post } from "interfaces/Post";
 import { Photo } from "interfaces/Photo";
+import { Album } from "interfaces/Albums";
 
 const MainRoutes = () => {
   const [users, setUsers] = useState<User[]>([]);
   const [posts, setPosts] = useState<Post[]>([]);
   const [photos, setPhotos] = useState<Photo[]>([]);
+  const [albums, setAlbums] = useState<Album[]>([]);
 
   useEffect(() => {
     fetch("https://jsonplaceholder.typicode.com/users")
@@ -41,6 +43,14 @@ const MainRoutes = () => {
         let shorterData = data.slice(0, 100);
         setPhotos(shorterData);
       });
+
+    fetch("https://jsonplaceholder.typicode.com/albums")
+      .then((res) => {
+        return res.json();
+      })
+      .then((data: Album[]) => {
+        setAlbums(data);
+      });
   }, []);
 
   return (
@@ -51,7 +61,7 @@ const MainRoutes = () => {
           path="/posts"
           element={<Posts posts={posts} setPosts={setPosts} users={users} />}
         />
-        <Route path="/albums" element={<Albums />} />
+        <Route path="/albums" element={<Albums albums={albums} users={users} />} />
         <Route path="/photos" element={<Photos photos={photos} />} />
         <Route path="/users" element={<Users users={users} />} />
         <Route path="*" element={<NotFound />} />
@@ -61,3 +71,4 @@ const MainRoutes = () => {
 };
 
 export default MainRoutes;
+
