@@ -7,7 +7,6 @@ import Photos from "pages/Photos";
 import Users from "pages/Users";
 import NotFound from "pages/NotFound";
 import Login from "pages/Login";
-import Comments from "pages/Comments";
 
 import { useEffect, useState } from "react";
 import { User } from "interfaces/User";
@@ -86,18 +85,6 @@ const MainRoutes = ({ currentUser, setCurrentUser }: MainRoutesProps) => {
             <Route path="/photos" element={<Photos photos={photos} />} />
             <Route path="/users" element={<Users users={users} />} />
             <Route path="/login" element={<Navigate to="/" />} />
-            <Route
-              path="/comments/:postId"
-              element={
-                <Comments
-                  comments={comments}
-                  setComments={setComments}
-                  postId={0}
-                  visible={true}
-                  currentUser={currentUser}
-                />
-              }
-            />
           </>
         )}
       </Routes>

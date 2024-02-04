@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import "styles/posts.css";
 import { Post, PostsProps } from "interfaces/Post";
 import { User } from "interfaces/User";
-import Comments from "pages/Comments";
+import Comments from "components/Comments";
 
 const initialPostState: Post = {
   userId: 0,
@@ -32,12 +32,12 @@ const Posts = ({ posts, setPosts, users, comments, setComments, currentUser }: P
   };
 
   const handleAddPost = () => {
-    const AddnewPost = { ...newPost, id: maxId + 1, userId: currentUser?.id || 0 };
+    const AddNewPost = { ...newPost, id: maxId + 1, userId: currentUser?.id || 0 };
     if (newPost.title.trim() === "" || newPost.body.trim() === "") {
       alert("Title and body are required!");
       return;
     }
-    setPosts([AddnewPost, ...posts]);
+    setPosts([AddNewPost, ...posts]);
     setNewPost(initialPostState);
   };
 

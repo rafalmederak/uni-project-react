@@ -61,7 +61,7 @@ const Comments = ({ comments, setComments, postId, visible, currentUser }: Comme
             />
             <textarea
               name="body"
-              placeholder="Ente comment text"
+              placeholder="Enter comment text"
               value={newComment.body}
               onChange={handleInputChange}
             ></textarea>
@@ -72,7 +72,7 @@ const Comments = ({ comments, setComments, postId, visible, currentUser }: Comme
               <div className="comment-user-info">
               <img
               src={`https://pic.onlinewebfonts.com/thumbnails/icons_504591.svg`}
-              alt={`User /*${currentUser?.name}*'s profile`}/> 
+              alt={`${comment.email}'s profile`}/> 
               <p>{comment.email}</p>
                  </div>
                  <h3>{comment.name}</h3>
