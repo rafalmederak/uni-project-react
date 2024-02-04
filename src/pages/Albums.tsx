@@ -1,26 +1,21 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import { AlbumsProps } from "interfaces/Albums";
-import { User } from "interfaces/User";
 import { Photo } from "interfaces/Photo";
 import "styles/albums.css";
 
-interface AlbumsWithUsersProps extends AlbumsProps {
-  users: User[];
-}
-
-const Albums: React.FC<AlbumsWithUsersProps> = ({ albums, users }) => {
+const Albums = ({ albums, users }: AlbumsProps) => {
   const [selectedAlbum, setSelectedAlbum] = useState<number | null>(null);
   const [photos, setPhotos] = useState<Photo[]>([]);
   const [selectedPhotoIndex, setSelectedPhotoIndex] = useState<number | null>(null);
   const [searchTerm, setSearchTerm] = useState<string>("");
   const [isSearching, setIsSearching] = useState<boolean>(true);
-  const albumsContainerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const fetchPhotos = async () => {
       try {
         const response = await fetch(`https://jsonplaceholder.typicode.com/photos?albumId=${selectedAlbum}`);
         const data = await response.json();
+        console.log("Fetched photos:", data);
         setPhotos(data);
       } catch (error) {
         console.error("Error fetching photos", error);
@@ -65,13 +60,14 @@ const Albums: React.FC<AlbumsWithUsersProps> = ({ albums, users }) => {
     }
   };
 
-  const filteredAlbums = albums.filter((album) =>
-    album.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    users.find((user) => user.id === album.userId)?.name.toLowerCase().includes(searchTerm.toLowerCase())
+  const filteredAlbums = albums.filter(
+    (album) =>
+      album.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      users.find((user) => user.id === album.userId)?.name.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
   return (
-    <div ref={albumsContainerRef} className="albums">
+    <div className="albums">
       {isSearching && (
         <div className="search-container">
           <input
@@ -100,7 +96,7 @@ const Albums: React.FC<AlbumsWithUsersProps> = ({ albums, users }) => {
             <div className="album-name">{filteredAlbums.find((album) => album.id === selectedAlbum)?.title}</div>
           </div>
           <div className="album-details">
-          <button onClick={handleBackToAlbums}>Back To Albums</button>
+            <button onClick={handleBackToAlbums}>Back To Albums</button>
           </div>
           <div className="photos-container">
             {photos.map((photo, index) => (
