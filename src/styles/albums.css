@@ -1,0 +1,226 @@
+.albums {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 0px 20px 20px 20px;
+    margin: 0 auto;
+  }
+  
+  .search-container {
+    text-align: center;
+    width: 100%;
+    margin-bottom: 40px;
+  }
+  
+  .album-card {
+    width: 300px;
+    margin: 10px;
+    padding: 15px;
+    border: 3px solid #000;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background-color: #e4e4e4;
+  }
+  
+  .album-card:hover {
+    border-color: #2196f3;
+  }
+  
+  .album-title {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .album-user {
+    font-size: 16px;
+    color: #555;
+  }
+  
+  .album-photos {
+    width: 100%;
+    margin-top: 20px;
+  }
+  
+  .photos-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 20px;
+    margin-top: 20px;
+  }
+  
+  .photo-card {
+    width: 300px;
+    margin: 10px;
+    padding: 0;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .image-container {
+    overflow: hidden;
+    border: 3px solid #000;
+    border-radius: 10px;
+    position: relative;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .image-container:hover {
+    border-color: #2196f3;
+  }
+  
+  .photo-card img {
+    width: 100%;
+    height: 245px;
+    object-fit: cover;
+    display: block;
+  }
+  
+  .description-frame {
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 10px;
+    text-align: center;
+  }
+  
+  .photo-card .description {
+    margin: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  
+  .photo-card:hover .description {
+    position: relative;
+    z-index: 1;
+    white-space: normal;
+    overflow: visible;
+    text-overflow: unset;
+  }
+  
+  .photo-card:hover .description-tooltip {
+    display: block;
+  }
+  
+  .description-tooltip {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.9);
+    border: 1px solid #ddd;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    z-index: 2;
+  }
+  
+  .modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .modal img {
+    max-width: 90%;
+    max-height: 90%;
+    border: 5px solid #fff;
+    border-radius: 10px;
+  }
+  
+  .modal.show {
+    display: flex;
+  }
+  
+  .modal-navigation {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    box-sizing: border-box;
+    z-index: 3;
+  }
+  
+  .modal-navigation button {
+    background-color: transparent;
+    border: none;
+    color: #fff;
+    font-size: 30px;
+    cursor: pointer;
+  }
+  
+  .modal-navigation button:hover {
+    color: #2196f3;
+  }
+  
+  .modal-close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    font-size: 30px;
+    color: #fff;
+  }
+  
+  .modal-close:hover {
+    color: #2196f3;
+  }
+  
+  .modal-navigation .arrow-left,
+  .modal-navigation .arrow-right,
+  .modal-close {
+    font-size: 40px;
+    color: #fff;
+    cursor: pointer;
+  }
+  
+  .modal-navigation .arrow-left:hover,
+  .modal-navigation .arrow-right:hover,
+  .modal-close:hover {
+    color: #2196f3;
+  }
+  
+  .album-details {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .album-details button {
+    background-color: #2196f3;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    margin-left: 30px;
+  }
+  
+  .album-details button:hover {
+    background-color: #0d5cb6;
+  }
+  
+  .album-details .album-name {
+    font-size: 20px;
+    font-weight: bold;
+  }
+  
+  .album-details .album-name {
+    width: 100%;
+    text-align: center;
+    margin-top: 20px;
+    font-size: 30px;
+}

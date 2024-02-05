@@ -12,6 +12,7 @@ import { useEffect, useState } from "react";
 import { User } from "interfaces/User";
 import { Post } from "interfaces/Post";
 import { Photo } from "interfaces/Photo";
+import { Album } from "interfaces/Albums";
 import { MainRoutesProps } from "interfaces/MainRoutes";
 import { Comment } from "interfaces/Comment";
 
@@ -19,8 +20,8 @@ const MainRoutes = ({ currentUser, setCurrentUser }: MainRoutesProps) => {
   const [users, setUsers] = useState<User[]>([]);
   const [posts, setPosts] = useState<Post[]>([]);
   const [photos, setPhotos] = useState<Photo[]>([]);
+  const [albums, setAlbums] = useState<Album[]>([]);
   const [comments, setComments] = useState<Comment[]>([]);
-
 
   useEffect(() => {
     fetch("https://jsonplaceholder.typicode.com/users")
@@ -47,13 +48,21 @@ const MainRoutes = ({ currentUser, setCurrentUser }: MainRoutesProps) => {
         let shorterData = data.slice(0, 100);
         setPhotos(shorterData);
       });
-      fetch("https://jsonplaceholder.typicode.com/comments")
+
+    fetch("https://jsonplaceholder.typicode.com/albums")
+      .then((res) => {
+        return res.json();
+      })
+      .then((data: Album[]) => {
+        setAlbums(data);
+      });
+
+    fetch("https://jsonplaceholder.typicode.com/comments")
       .then((res) => res.json())
       .then((data: Comment[]) => {
-        setComments(data); 
-
+        setComments(data);
       });
-      }, []);
+  }, []);
 
   return (
     <>
@@ -78,10 +87,20 @@ const MainRoutes = ({ currentUser, setCurrentUser }: MainRoutesProps) => {
             <Route
               path="/posts"
               element={
-                <Posts posts={posts} setPosts={setPosts} users={users} comments={comments} setComments={setComments} currentUser={currentUser} />
+                <Posts
+                  posts={posts}
+                  setPosts={setPosts}
+                  users={users}
+                  comments={comments}
+                  setComments={setComments}
+                  currentUser={currentUser}
+                />
               }
             />
-            <Route path="/albums" element={<Albums />} />
+            <Route
+              path="/albums"
+              element={<Albums albums={albums} users={users} />}
+            />
             <Route path="/photos" element={<Photos photos={photos} />} />
             <Route path="/users" element={<Users users={users} />} />
             <Route path="/login" element={<Navigate to="/" />} />
