@@ -11,20 +11,29 @@ const initialPostState: Post = {
   body: "",
 };
 
-const Posts = ({ posts, setPosts, users, comments, setComments, currentUser }: PostsProps) => {
+const Posts = ({
+  posts,
+  setPosts,
+  users,
+  comments,
+  setComments,
+  currentUser,
+}: PostsProps) => {
   const [newPost, setNewPost] = useState<Post>(initialPostState);
   const [showComments, setShowComments] = useState<number | null>(null);
- 
-  const maxId = Math.max(...posts.map(post => post.id));
+
+  const maxId = Math.max(...posts.map((post) => post.id));
 
   useEffect(() => {
-    setNewPost(prevNewPost => ({
+    setNewPost((prevNewPost) => ({
       ...prevNewPost,
-      id: maxId
+      id: maxId,
     }));
   }, [maxId]);
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleInputChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     setNewPost({
       ...newPost,
       [e.target.name]: e.target.value,
@@ -32,7 +41,11 @@ const Posts = ({ posts, setPosts, users, comments, setComments, currentUser }: P
   };
 
   const handleAddPost = () => {
-    const AddNewPost = { ...newPost, id: maxId + 1, userId: currentUser?.id || 0 };
+    const AddNewPost = {
+      ...newPost,
+      id: maxId + 1,
+      userId: currentUser?.id || 0,
+    };
     if (newPost.title.trim() === "" || newPost.body.trim() === "") {
       alert("Title and body are required!");
       return;
@@ -84,17 +97,24 @@ const Posts = ({ posts, setPosts, users, comments, setComments, currentUser }: P
           </div>
           <h2>{post.title}</h2>
           <p className="post-text">{post.body}</p>
-          <button onClick={() => handleDeletePost(post.id)}>Delete Post</button>
+          {post.userId === currentUser?.id && (
+            <button onClick={() => handleDeletePost(post.id)}>
+              Delete Post
+            </button>
+          )}
           <div className="comment-section">
-          <button onClick={() => handleShowComments(post.id)}>Show/Hide Comments</button>
-          {showComments === post.id && (
-               <Comments
-               postId={post.id}
-               visible={true}
-               comments={comments}      
-               setComments={setComments} 
-               currentUser={currentUser}/>
-              )}
+            <button onClick={() => handleShowComments(post.id)}>
+              Show/Hide Comments
+            </button>
+            {showComments === post.id && (
+              <Comments
+                postId={post.id}
+                visible={true}
+                comments={comments}
+                setComments={setComments}
+                currentUser={currentUser}
+              />
+            )}
           </div>
         </div>
       ))}
