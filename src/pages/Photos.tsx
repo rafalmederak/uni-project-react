@@ -1,9 +1,10 @@
 import React, { useState } from "react";
-import "styles/photos.css";
 import { FaArrowLeft, FaArrowRight, FaTimes } from "react-icons/fa";
 import { PhotosProps } from "interfaces/Photo";
+import { Album } from "interfaces/Albums";
+import "styles/photos.css";
 
-const Photos = ({ photos }: PhotosProps) => {
+const Photos = ({ photos, albums }: PhotosProps) => {
   const [searchTerm, setSearchTerm] = useState<string>("");
   const [selectedPhotoIndex, setSelectedPhotoIndex] = useState<number | null>(
     null
@@ -32,8 +33,14 @@ const Photos = ({ photos }: PhotosProps) => {
     }
   };
 
+  const findAlbumName = (albumId: number): string => {
+    const foundAlbum = albums.find((album) => album.id === albumId);
+    return foundAlbum ? foundAlbum.title : "Unknown Album";
+  };
+
   const filteredPhotos = photos.filter((photo) =>
-    photo.title.toLowerCase().includes(searchTerm)
+    photo.title.toLowerCase().includes(searchTerm) ||
+    findAlbumName(photo.albumId).toLowerCase().includes(searchTerm)
   );
 
   return (
@@ -53,6 +60,7 @@ const Photos = ({ photos }: PhotosProps) => {
             <div className="image-container" onClick={() => openModal(index)}>
               <img src={photo.url} alt={`${photo.title}`} />
               <div className="description-frame">
+                <div className="album-name">Album: {findAlbumName(photo.albumId)}</div>
                 <div className="description">{photo.title}</div>
                 <div className="description-tooltip">{photo.title}</div>
               </div>
