@@ -5,7 +5,6 @@ import Posts from "pages/Posts";
 import Albums from "pages/Albums";
 import Photos from "pages/Photos";
 import Users from "pages/Users";
-import NotFound from "pages/NotFound";
 import Login from "pages/Login";
 
 import { useEffect, useState } from "react";
@@ -83,7 +82,7 @@ const MainRoutes = ({ currentUser, setCurrentUser }: MainRoutesProps) => {
           </>
         ) : (
           <>
-            <Route path="/" element={<Home />} />
+            <Route path="/" element={<Home posts={posts} users={users} />} />
             <Route
               path="/posts"
               element={
