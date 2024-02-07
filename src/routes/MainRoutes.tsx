@@ -100,7 +100,7 @@ const MainRoutes = ({ currentUser, setCurrentUser }: MainRoutesProps) => {
               path="/albums"
               element={<Albums albums={albums} users={users} />}
             />
-            <Route path="/photos" element={<Photos photos={photos} />} />
+            <Route path="/photos" element={<Photos photos={photos} albums={albums} />} />
             <Route path="/users" element={<Users users={users} />} />
             <Route path="/login" element={<Navigate to="/" />} />
           </>

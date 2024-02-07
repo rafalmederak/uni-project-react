@@ -1,3 +1,5 @@
+import { Album } from "interfaces/Albums";
+
 export interface Photo {
   albumId: number;
   id: number;
@@ -7,4 +9,5 @@ export interface Photo {
 
 export interface PhotosProps {
   photos: Photo[];
+  albums: Album[];
 }
