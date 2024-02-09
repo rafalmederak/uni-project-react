@@ -1,8 +1,6 @@
 import { NavLink } from "react-router-dom";
 import "styles/nav.css";
-import logo from "assets/images/logo.png"; 
-
-
+import logo from "assets/images/logo.png";
 
 const Nav = () => {
   return (
@@ -13,6 +11,7 @@ const Nav = () => {
       <NavLink to="/albums">Albums</NavLink>
       <NavLink to="/photos">Photos</NavLink>
       <NavLink to="/users">Users</NavLink>
+      <NavLink to={`/profile`}>Profile</NavLink>
     </nav>
   );
 };

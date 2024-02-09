@@ -1,0 +1,50 @@
+.user-detail {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #fff;
+  padding: 20px;
+  margin: 20px auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(168, 145, 145, 0.1);
+  max-width: 1200px;
+}
+
+.user-detail h2,
+.user-detail h3 {
+  color: #292424;
+}
+
+.user-detail h3 {
+  margin-top: 30px;
+}
+
+.user-detail p {
+  color: #666;
+}
+
+.user-detail img {
+  width: 100px;
+  max-width: 100px;
+  border-radius: 50%;
+  margin-bottom: 20px;
+  padding: 10px;
+  border: 3px solid #61bbc7;
+}
+
+.user-detail-post {
+  margin-top: 20px;
+  padding: 15px;
+  background-color: #f9f9f9;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(165, 124, 124, 0.1);
+  width: 100%;
+}
+
+.user-detail-post h4 {
+  color: #333;
+}
+
+.user-detail-post p {
+  color: #555;
+}
