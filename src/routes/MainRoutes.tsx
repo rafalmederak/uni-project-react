@@ -15,6 +15,7 @@ import { Photo } from "interfaces/Photo";
 import { Album } from "interfaces/Albums";
 import { MainRoutesProps } from "interfaces/MainRoutes";
 import { Comment } from "interfaces/Comment";
+import UserDetail from "pages/UserDetail";
 
 const MainRoutes = ({ currentUser, setCurrentUser }: MainRoutesProps) => {
   const [users, setUsers] = useState<User[]>([]);
@@ -103,6 +104,10 @@ const MainRoutes = ({ currentUser, setCurrentUser }: MainRoutesProps) => {
             />
             <Route path="/photos" element={<Photos photos={photos} />} />
             <Route path="/users" element={<Users users={users} />} />
+            <Route path="/users" element={<Users users={users} />} />
+            <Route path="/user/:userId" element={<UserDetail currentUser={currentUser} users={users} posts={posts} />} />
+          
+
             <Route path="/login" element={<Navigate to="/" />} />
           </>
         )}
