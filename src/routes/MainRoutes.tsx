@@ -5,7 +5,6 @@ import Posts from "pages/Posts";
 import Albums from "pages/Albums";
 import Photos from "pages/Photos";
 import Users from "pages/Users";
-import NotFound from "pages/NotFound";
 import Login from "pages/Login";
 
 import { useEffect, useState } from "react";
@@ -105,8 +104,10 @@ const MainRoutes = ({ currentUser, setCurrentUser }: MainRoutesProps) => {
             <Route path="/photos" element={<Photos photos={photos} />} />
             <Route path="/users" element={<Users users={users} />} />
             <Route path="/users" element={<Users users={users} />} />
-            <Route path="/user/:userId" element={<UserDetail currentUser={currentUser} users={users} posts={posts} />} />
-          
+            <Route
+              path="/profile"
+              element={<UserDetail currentUser={currentUser} posts={posts} />}
+            />
 
             <Route path="/login" element={<Navigate to="/" />} />
           </>
