@@ -103,7 +103,6 @@ const MainRoutes = ({ currentUser, setCurrentUser }: MainRoutesProps) => {
             />
             <Route path="/photos" element={<Photos photos={photos} />} />
             <Route path="/users" element={<Users users={users} />} />
-            <Route path="/users" element={<Users users={users} />} />
             <Route
               path="/profile"
               element={<UserDetail currentUser={currentUser} posts={posts} />}
